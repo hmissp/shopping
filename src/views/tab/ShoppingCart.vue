@@ -1,5 +1,5 @@
 <template>
-    <div class="top">我的全部购物车(2)</div>
+    <div class="top">我的全部购物车({{allProductCount}})</div>
     <div class="mask"></div>
     <div class="content" v-if='isHaveProduct'>
       <template  v-for='(item,index,i) in List' :key='index'>
@@ -132,6 +132,17 @@ export default {
         }
       }
       return isHave
+    },
+    allProductCount () {
+      const productsList = store.state.shopList
+      let count = 0
+      for (const i in productsList) {
+        const shopItem = productsList[i]
+        for (const j in shopItem.productsList) {
+          if (shopItem.productsList[j].count > 0) count += shopItem.productsList[j].count
+        }
+      }
+      return count
     }
   },
   mounted () {

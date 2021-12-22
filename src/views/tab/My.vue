@@ -1,6 +1,8 @@
 <template>
     <div class="top">
-        <div class="ball"></div>
+        <div class="ball">
+            <div class="ball-content"></div>
+        </div>
         <i class='iconfont top-icon'>&#xe68b;</i>
         <div class="top-info">
             <div class="top-info-photo">
@@ -47,22 +49,28 @@ export default {
 </script>
 <style lang="scss" scoped>
 .top{
-    width: 3.75rem;
+    width: 100%;
     height: 2.5rem;
     position: absolute;
     top:0;
     left: 0;
     right: 0;
     & .ball{
-        width: 6rem;
-        height: 6rem;
-        border-radius: 50%;
-        background-image: linear-gradient(239deg, #1a58f5 0%, #76d4fc 100%);
+        width: 100%;
+        height: 2.5rem;
         position: absolute;
-        bottom:0;
-        left: 50%;
-        transform: translateX(-50%);
         z-index: -1;
+        overflow: hidden;
+        &-content{
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            background-image: linear-gradient(239deg, #1a58f5 0%, #76d4fc 100%);
+            position: absolute;
+           bottom:0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
     &-icon{
         color:#fff;

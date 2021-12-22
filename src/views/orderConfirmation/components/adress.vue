@@ -8,7 +8,7 @@
             <div class="confirm-top-text">确认订单</div>
         </div>
         <div class="confirm-info" @click='handleAdressClick'>
-            <div class="confirm-info-left">
+            <div class="confirm-info-left" v-if='allAdressList.length'>
                 <div class="confirm-info-left-title">收货地址</div>
                 <div class="confirm-info-left-adress">{{adressList?.city}}{{adressList?.school}}{{adressList?.doorplate}}</div>
                 <div class="confirm-info-left-person">
@@ -17,6 +17,7 @@
                     <span class='confirm-info-left-person-phone'>{{adressList?.phone}}</span>
                 </div>
             </div>
+            <div class="confirm-info-empty" v-else>还没有添加地址，快去添加吧</div>
             <i class='iconfont confirm-info-icon'>&#xe667;</i>
         </div>
     </div>
@@ -25,6 +26,11 @@
 import store from '@/store/index.js'
 export default {
   name: 'Adress',
+  data () {
+    return {
+      allAdressList: store.state.adressList
+    }
+  },
   methods: {
     handleAdressClick () {
       this.$router.push({
@@ -58,8 +64,6 @@ export default {
       }
       return data
     }
-  },
-  mounted () {
   }
 }
 </script>
@@ -131,6 +135,10 @@ export default {
                 font-size: .12rem;
                 line-height: .17rem;
             }
+        }
+        &-empty{
+          font-size: .16rem;
+          color: $iconColor;
         }
         &-icon{
             flex:1;

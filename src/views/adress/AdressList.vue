@@ -8,7 +8,8 @@
     </router-link>
   </div>
   <div class="content">
-    <div class="content-title">我的收货地址</div>
+    <div class="content-title" v-if='adressList?.length'>我的收货地址</div>
+    <div class="content-empty" v-else>还没有添加地址，快新建一个吧</div>
     <div class="content-item" v-for='(item,index) in adressList' :key='index' @click=hanleItemClick(item.id)>
       <div class="content-item-info">
         <div class="content-item-info-title">
@@ -105,6 +106,9 @@ export default {
   color: $iconColor;
   overflow-y: scroll;
   &-title{
+    font-size: .14rem;
+  }
+  &-empty{
     font-size: .14rem;
   }
   &-item{
